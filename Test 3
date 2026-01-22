@@ -1,0 +1,4 @@
+def keskmine(a, b, c):
+    return (a + b + c) / 3
+
+print(keskmine(3, 6, 9))

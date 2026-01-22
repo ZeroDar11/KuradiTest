@@ -1,0 +1,8 @@
+numbrid = [5, 2, 9, 1]
+
+max_arv = numbrid[0]
+for n in numbrid:
+    if n > max_arv:
+        max_arv = n
+
+print(max_arv)

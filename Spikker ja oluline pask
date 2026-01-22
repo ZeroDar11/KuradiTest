@@ -1,0 +1,17 @@
+#❗ Väga tähtsad vead, mida vältida
+
+#❌ Unustad koolon :
+#❌ Vale taandus (indent)
+#❌ input() ilma int()
+#❌ Funktsioonis print asemel vaja return
+
+
+#🧠 Kiirspikker testiks
+
+#range(1, 6) → 1 kuni 5
+
+#% → jääk (paaris/paaritu)
+
+#len(list) → listi pikkus
+
+#def nimi():
