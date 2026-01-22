@@ -1,0 +1,9 @@
+nimi = "Mark"
+vanus = 18
+pikkus = 1.75
+on_opilane = True
+
+print(nimi)
+print(vanus)
+print(pikkus)
+print(on_opilane)

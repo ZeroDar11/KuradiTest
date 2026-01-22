@@ -1,0 +1,5 @@
+nimi = input("Sisesta nimi: ")
+vanus = int(input("Sisesta vanus: "))
+
+print("Tere", nimi)
+print("Sa oled", vanus, "aastat vana")

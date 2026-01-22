@@ -1,0 +1,7 @@
+numbrid = [3, 7, 2, 9]
+
+print(numbrid[0])
+print(len(numbrid))
+
+for n in numbrid:
+    print(n)

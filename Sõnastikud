@@ -1,0 +1,7 @@
+opilane = {
+    "nimi": "Karl",
+    "vanus": 17
+}
+
+print(opilane["nimi"])
+print(opilane["vanus"])

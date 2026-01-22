@@ -1,0 +1,4 @@
+def tervitus(nimi):
+    print("Tere", nimi)
+
+tervitus("Anna")

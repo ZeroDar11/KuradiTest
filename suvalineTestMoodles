@@ -1,0 +1,80 @@
+import random
+import smtplib
+from email.message import EmailMessage
+
+# Andmestruktuurid
+saajad = []
+soovid = []
+
+
+# ---------- ANDMETE KOGUMINE ----------
+
+def kogu_soovid():
+    try:
+        kogus = int(input("Mitu õnnitlust soovid lisada? "))
+        for i in range(kogus):
+            soov = input(f"Sisesta soov {i + 1}: ")
+            soovid.append(soov)
+    except ValueError:
+        raise ValueError("Soovide arv peab olema number!")
+
+
+def kogu_saajad():
+    try:
+        kogus = int(input("Mitu saajat soovid lisada? "))
+        for i in range(kogus):
+            email = input(f"Sisesta saaja {i + 1} e-post: ")
+            if "@" not in email:
+                print("⚠ Vigane e-posti aadress, jäeti vahele")
+                continue
+            saajad.append(email)
+    except ValueError:
+        raise ValueError("Saajate arv peab olema number!")
+
+
+# ---------- ÕNNITLUSTE GENEREERIMINE ----------
+
+def genereeri_juhuslik_soov(soovide_list):
+    if not soovide_list:
+        raise ValueError("Soove pole lisatud!")
+    return random.choice(soovide_list)
+
+
+def koosta_onnitlused(valitud_saajad=None):
+    if valitud_saajad is None:
+        valitud_saajad = saajad
+
+    tulemused = []
+    for saaja in valitud_saajad:
+        soov = genereeri_juhuslik_soov(soovid)
+        tekst = f"{saaja}: {soov}"
+        tulemused.append(tekst)
+
+    return tulemused
+
+
+# ---------- E-KIRJA SAATMINE ----------
+
+def saada_kiri(saaja, sisu):
+    try:
+        saatja = "sinunimi@gmail.com"
+        parool = "RAKENDUSE_PAROOL"
+
+        msg = EmailMessage()
+        msg.set_content(sisu)
+        msg["Subject"] = "Jõuluõnnitlus"
+        msg["From"] = saatja
+        msg["To"] = saaja
+
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(saatja, parool)
+            server.send_message(msg)
+
+        return True
+
+    except smtplib.SMTPException as e:
+        print("SMTP viga:", e)
+        return False
+    except Exception as e:
+        print("Üldine viga:", e)
+        return False

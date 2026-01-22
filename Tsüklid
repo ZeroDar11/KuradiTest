@@ -1,0 +1,9 @@
+# for-tsükkel
+for i in range(5):
+    print(i)
+
+# while-tsükkel
+x = 0
+while x < 3:
+    print(x)
+    x += 1

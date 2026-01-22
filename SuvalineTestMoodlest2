@@ -1,0 +1,54 @@
+from onnitleja import (
+    kogu_soovid,
+    kogu_saajad,
+    koosta_onnitlused
+)
+
+# ---------- ALGSEADISTUS ----------
+
+try:
+    kogu_soovid()
+    kogu_saajad()
+except ValueError as viga:
+    print("Viga andmete kogumisel:", viga)
+    exit()
+
+
+# ---------- MENÜÜ ----------
+
+while True:
+    try:
+        print("\n--- JÕULUTERVITUSTE MENÜÜ ---")
+        print("1: Õnnitle kõiki saajaid")
+        print("2: Õnnitle ühte saajat")
+        print("3: Õnnitle mitut saajat")
+        print("0: Välju")
+
+        valik = int(input("Vali tegevus: "))
+
+        if valik == 1:
+            tulemused = koosta_onnitlused()
+
+        elif valik == 2:
+            aadress = input("Sisesta e-posti aadress: ")
+            tulemused = koosta_onnitlused([aadress])
+
+        elif valik == 3:
+            aadressid = input("Sisesta e-postid (komadega): ")
+            aadresside_list = aadressid.split(",")
+            tulemused = koosta_onnitlused(aadresside_list)
+
+        elif valik == 0:
+            print("Programm lõpetatud 🎄")
+            break
+
+        else:
+            print("Tundmatu valik!")
+            continue
+
+        print("\n--- ÕNNITLUSED ---")
+        for t in tulemused:
+            print(t)
+
+    except ValueError as viga:
+        print("Viga:", viga)
